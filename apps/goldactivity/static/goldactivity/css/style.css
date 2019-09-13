@@ -1,0 +1,66 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+h1 span{
+    display: inline-block;
+}
+.score{
+    width: 200px;
+    height:40px;
+    border: 1px solid black;
+    text-align: right;
+    color: goldenrod;
+    margin-bottom: -3px;
+    padding-right: 10px;
+
+}
+.boardpane{
+    padding:20px;
+}
+.activitypane{
+    text-align: center;
+    width: 150px;
+    border: 3px solid black;
+    padding:20px;
+    margin-top:30px;
+    margin-bottom:30px;
+    margin-left:30px;
+    display: inline-block;
+}
+.activitybox{
+    margin-left: 5px;
+}
+p{
+    margin-left:15px;
+}
+.findgold{
+    background-color: goldenrod;
+    padding: 3px;
+    border-radius: 10px;
+}
+.resetme{
+    border: 1px solid black;
+    font-size: 9px;
+    margin-left: 20px;
+    padding:3px;
+}
+a{
+    text-decoration: none;
+}
+.hide{
+    display: none;
+}
+.unhide{
+    display: block;
+    position: absolute;
+    top: 200px;
+    left:150px;
+    font-size: 124px;
+    color: red;
+    transform:  rotate(340deg) scale(1.5) skew(-2deg) translate(3px);
+    -webkit-transform:  rotate(340deg) scale(1.5) skew(-2deg) translate(3px);
+    -moz-transform: rotate(340deg) scale(1.5) skew(-2deg) translate(3px);
+    -o-transform:  rotate(340deg) scale(1.5) skew(-2deg) translate(3px);
+    -ms-transform:  rotate(340deg) scale(1.5) skew(-2deg) translate(3px);
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ninja Gold</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'goldactivity/css/style.css' %}">
+</head>
+<body>
+    <div class="boardpane">
+        <h1>Your Gold: <span class="score">{{ request.session.score }}</span><span class="resetme"><a href="/resetme">Reset</a></span></h1>
+        <div class="activitypane">
+            <form class="farm" action="/farm" method="POST">
+                {% csrf_token %}
+                <h3>Farm</h3>
+                <h5>(earns 10-20 golds)</h5><br>
+                <input class="findgold" type="submit" value="Find Gold!">
+            </form>
+        </div>
+        <div class="activitypane">
+            <form class="cave" action="/cave" method="POST">
+                {% csrf_token %}
+                <h3>Cave</h3>
+                <h5>(earns 5-10 golds)</h5><br>
+                <input class="findgold" type="submit" value="Find Gold!">
+            </form>
+        </div>
+        <div class="activitypane">
+            <form class="house" action="/house" method="POST">
+                {% csrf_token %}
+                <h3>House</h3>
+                <h5>(earns 2-5 golds)</h5><br>
+                <input class="findgold" type="submit" value="Find Gold!">
+            </form>
+        </div>
+        <div class="activitypane">
+            <form class="casino" action="/casino" method="POST">
+                {% csrf_token %}
+                <h3>Casino</h3>
+                <h5>(earns/takes 0-100 golds)</h5><br>
+                {% if request.session.stopme %}
+                    <input class="findgold" type="submit" value="Find Gold!" disabled=true>
+                {% else %}
+                    <input class="findgold" type="submit" value="Find Gold!">
+                {% endif %}
+            </form>
+        </div>
+        <p>Activities:</p>
+        <textarea class="activitybox" rows="30" cols="150">
+            {% for activity in request.session.activities %}
+                {{activity}}
+            {% endfor %}
+        </textarea>
+        <p class="{{request.session.bankrupt}}">BANKRUPT</p></div>
+    </div>
+</body>
+</html>

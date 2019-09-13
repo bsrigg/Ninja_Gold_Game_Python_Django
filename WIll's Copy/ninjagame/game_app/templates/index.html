@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ninja Golds</title>
+    <style>
+        .green {
+            color: seagreen;
+        }
+        .red {
+            color: maroon;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome Ninjas!</h1>
+    <fieldset>
+        <legend>Golds</legend>
+        <p>{{ request.session.golds }} G</p>
+    </fieldset>
+
+    <fieldset>
+        <legend>Farm</legend>
+        <form action="/rpg" method="post">
+            {% csrf_token %}
+            <input type="submit" name="location" value="farm">
+        </form>
+    </fieldset>
+
+    <fieldset>
+        <legend>Cave</legend>
+        <form action="/rpg" method="post">
+            {% csrf_token %}
+            <input type="submit" name="location" value="cave">
+        </form>
+    </fieldset>
+
+    <fieldset>
+        <legend>House</legend>
+        <form action="/rpg" method="post">
+            {% csrf_token %}
+            <input type="submit" name="location" value="house">
+        </form>
+    </fieldset>
+
+    <fieldset>
+        <legend>Casino</legend>
+        <form action="/rpg" method="post">
+            {% csrf_token %}
+            {% if request.session.golds >= 0 %}
+                <input type="submit" name="location" value="casino">
+            {% else %}
+                <p class="red">Go get a job!</p>
+                <input type="submit" name="location" value="casino" disabled>
+            {% endif %}
+        </form>
+    </fieldset>
+
+    {% if false %}
+    <fieldset>
+        <legend>Random</legend>
+        <form action="/rpg" method="post">
+            {% csrf_token %}
+            <input type="text" name="location">
+            <input type="submit" value="random">
+        </form>
+    </fieldset>
+    {% endif %}
+
+    <fieldset>
+        <legend>Activity Log</legend>
+        <div style="height:200px;overflow:auto;">
+            {% for activity in request.session.activities reversed %}
+                {{ activity | safe }}
+            {% endfor %}
+        </div>
+    </fieldset>
+
+    <a href="/reset"><button>Reset</button></a>
+
+</body>
+</html>
